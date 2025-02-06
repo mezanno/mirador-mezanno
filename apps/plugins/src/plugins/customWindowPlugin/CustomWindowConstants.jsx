@@ -1,6 +1,5 @@
 import CustomView from './CustomView';
 import GallicaViewer from './GallicaViewer';
-import ListGalleryView from './ListGalleryView';
 
 export const WINDOW_TYPES = {
   GALLICA_EXPLORER: 'gallica-explorer',
@@ -11,6 +10,5 @@ export const WINDOW_TYPES = {
 
 export const WINDOW_TARGETS = {
   [WINDOW_TYPES.GALLICA_EXPLORER]: <GallicaViewer />,
-  [WINDOW_TYPES.CUSTOM]: <CustomView/>,
-  [WINDOW_TYPES.LIST_GALLERY]: <ListGalleryView />
+  [WINDOW_TYPES.CUSTOM]: <CustomView/>
 };
