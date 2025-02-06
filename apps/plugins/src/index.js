@@ -1,13 +1,27 @@
 import Mirador from 'mirador';
 import plugins from './plugins';
 
+//get the manifests from localstorage
+const manifests = JSON.parse(localStorage.getItem('manifests')) || [];
+
+//get the manifest from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const manifest = urlParams.get('manifest');
+if(manifest) {
+    if(!manifests.includes(manifest)) {
+        manifests.push(manifest);
+        localStorage.setItem('manifests', JSON.stringify(manifests));
+    }
+}
+
 const config = {
     id: 'mirador',
-    windows: [
+    catalog: manifests.map(manifest => ({ manifestId: manifest })),
+    windows: manifest ? [
         {
-            manifestId: 'https://gallica.bnf.fr/iiif/ark:/12148/bpt6k11620369/manifest.json'
+            manifestId: manifest
         }
-    ]
+    ] : []
 };
 
 Mirador.viewer(config, plugins);
