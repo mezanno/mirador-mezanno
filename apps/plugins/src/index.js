@@ -1,6 +1,5 @@
 import Mirador from 'mirador';
-
-console.log('Mirador', Mirador.viewer);
+import plugins from './plugins';
 
 const config = {
     id: 'mirador',
@@ -11,4 +10,4 @@ const config = {
     ]
 };
 
-Mirador.viewer(config);
+Mirador.viewer(config, plugins);

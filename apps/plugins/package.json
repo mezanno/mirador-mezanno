@@ -13,6 +13,7 @@
     "@emotion/react": "11.10",
     "@emotion/styled": "11.10",
     "@mui/material": "^5.13.5",
+    "@mui/icons-material": "^5.11.16",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.5.0",
     "dexie": "^4.0.10",
