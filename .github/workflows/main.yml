@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Build packages/mirador
-        run: pnpm build --filter=mirador
+        run: pnpm build --filter=packages/mirador
 
       - name: Build apps/plugins
         run: pnpm build --filter=plugins
