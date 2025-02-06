@@ -4,7 +4,7 @@ Mirador-Mezanno is a Mirador 4 plugin that adds collection and annotation tools 
 
 ## Demo
 
-A demo is available at https://jonathan-epita.github.io/mirador-mezanno/
+A demo is available at http://mezanno.xyz/mirador-mezanno/
 
 ## Installation
 
@@ -12,7 +12,7 @@ To install Mirador-Mezanno, follow these steps:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/mirador-mezanno.git
+    git clone https://github.com/mezanno/mirador-mezanno.git
     ```
 2. Navigate to the project directory:
     ```sh
