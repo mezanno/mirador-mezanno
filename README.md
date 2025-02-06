@@ -20,11 +20,15 @@ To install Mirador-Mezanno, follow these steps:
     ```
 3. Install the dependencies:
     ```sh
-    npm install
+    pnpm install
     ```
-4. Test the project:
+4. Build mirador dependency:
     ```sh
-    npm run dev
+    turbo build --filter=mirador
+    ```
+5. Test the project:
+    ```sh
+    turbo dev
     ```
 ## Use
 
