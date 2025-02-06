@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "mirador-mezanno",
   "private": true,
   "scripts": {
     "build": "turbo build",
