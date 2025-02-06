@@ -32,8 +32,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build Project
-        run: pnpm build
+      - name: Build packages/mirador
+        run: pnpm --filter packages/mirador build
+
+      - name: Build apps/plugins
+        run: pnpm --filter apps/plugins build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
