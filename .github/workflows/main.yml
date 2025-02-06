@@ -33,10 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Build packages/mirador
-        run: pnpm build --filter=packages/mirador
-
-      - name: Build apps/plugins
-        run: pnpm build --filter=plugins
+        run: pnpm build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
