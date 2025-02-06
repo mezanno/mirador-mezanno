@@ -14,6 +14,21 @@ if(manifest) {
     }
 }
 
+// you can open mirador viewer with a manifest by adding ?manifest=manifest_url to the URL
+
+// get the manifests from localstorage
+const manifests = JSON.parse(localStorage.getItem('manifests')) || [];
+
+//get the manifest from the URL
+const urlParams = new URLSearchParams(window.location.search);
+const manifest = urlParams.get('manifest');
+if(manifest) {
+    if(!manifests.includes(manifest)) {
+        manifests.push(manifest);
+        localStorage.setItem('manifests', JSON.stringify(manifests));
+    }
+}
+
 const config = {
     id: 'mirador',
     catalog: manifests.map(manifest => ({ manifestId: manifest })),
