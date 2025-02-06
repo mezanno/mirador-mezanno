@@ -5,12 +5,25 @@ import { Button, Card, CardActions, CardContent, CardHeader, Dialog, DialogActio
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { v4 as uuid } from 'uuid';
-import { addList, addSelectionToList, removeList, updateList } from "../../state/reducers/lists";
+import { addList, addSelectionToList, removeList, updateList, removeSelectionFromList } from "../../state/reducers/lists";
 import { useState } from "react";
 
 const AnnotationToolPanel = () => {  
   const selection = useSelector(getSelection);
-  const lists = useSelector(getLists); 
+  const lists = useSelector(getLists);
+  
+  //return the common ids between the list and the current selection
+  const getCommonIds = (list, selection) => {
+    const listCanvasIds = list.content.map(item => item.id);
+    const selectionCanvasIds = selection.map(item => item.id);
+    
+    return listCanvasIds.filter(id => selectionCanvasIds.includes(id));
+  }
+
+  const handleRemoveSelectionFromList = (list, selection) => {
+    const commonIds = getCommonIds(list, selection);
+    dispatch(removeSelectionFromList({ listId: list.id, idsToRemove: commonIds }));
+  }
 
   const dispatch = useDispatch();
 
@@ -91,6 +104,12 @@ const AnnotationToolPanel = () => {
                   <Typography>Ajouter <span style={{ fontWeight: 'bold' }}>{selection.length}</span> élément(s) à la sélection</Typography>
                   </Button>
                 }
+                <br/>
+                {getCommonIds(list, selection).length > 0 && (
+                  <Button variant="text" color="error" onClick={() => handleRemoveSelectionFromList(list, selection)}>
+                    <Typography color="error">Retirer <span>{getCommonIds(list, selection).length}</span> élément(s) de la sélection</Typography>
+                  </Button>
+                )}
               </CardContent>
               <CardActions>
                 <Button onClick={() => handleDeleteList(list.id)} size="small">

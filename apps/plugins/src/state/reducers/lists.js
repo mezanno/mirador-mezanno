@@ -34,9 +34,17 @@ export const listsSlice = createSlice({
                 }
                 list.content.push(...selection);
             }
+        },
+        removeSelectionFromList: (state, action) => {
+            const idsToRemove = action.payload.idsToRemove;
+            const listId = action.payload.listId;
+            const list = state.values.find(elt => elt.id === listId);
+            if (list) {
+                list.content = list.content.filter(item => !idsToRemove.includes(item.id));
+            }
         }
     }
 });
 
-export const { addList, removeList, updateList, setLists, addSelectionToList } = listsSlice.actions;
+export const { addList, removeList, updateList, setLists, addSelectionToList, removeSelectionFromList } = listsSlice.actions;
 export default listsSlice.reducer;
